@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import Alert from './components/layout/Alert'
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import NotFound from "./components/Pages/NotFound";
@@ -22,6 +23,7 @@ function App() {
             <Navbar />
 
             <main className="container mx-auto px-3 pb-12">
+              <Alert />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
