@@ -13,6 +13,7 @@ import About from "./components/Pages/About";
 import NotFound from "./components/Pages/NotFound";
 import { GithubProvider } from "./context/github/GithubContext";
 import { AlertProvider } from "./context/alert/AlertContext";
+import User from "./components/Pages/User";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/user/:login" element={<User />} />
                 <Route path="/404" element={<NotFound />} />
                 <Route path="*" element={<Navigate replace to={"/404"} />} />
               </Routes>
