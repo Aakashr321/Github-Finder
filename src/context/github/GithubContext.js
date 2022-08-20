@@ -1,20 +1,17 @@
-import React, { useReducer, createContext } from "react";
-import GithubReducer from "./GithubReducer";
+import { createContext, useReducer } from 'react'
+import githubReducer from './GithubReducer'
 
-const GithubContext = createContext();
+const GithubContext = createContext()
 
 export const GithubProvider = ({ children }) => {
-  //   const [users, setUsers] = useState([]);
-  //   const [loading, setLoading] = useState(false);
-
   const initialState = {
     users: [],
     user: {},
     repos: [],
     loading: false,
-  };
+  }
 
-  const [state, dispatch] = useReducer(GithubReducer, initialState);
+  const [state, dispatch] = useReducer(githubReducer, initialState)
 
   return (
     <GithubContext.Provider
@@ -25,7 +22,7 @@ export const GithubProvider = ({ children }) => {
     >
       {children}
     </GithubContext.Provider>
-  );
-};
+  )
+}
 
-export default GithubContext;
+export default GithubContext
