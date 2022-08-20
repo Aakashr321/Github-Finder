@@ -4,7 +4,7 @@ import AlertContext from "../../context/alert/AlertContext";
 import { searchUsers } from "../../context/github/GithubActions";
 
 function UserSearch() {
-  const { users,dispatch, clearUsers } = useContext(GithubContext);
+  const { users, dispatch } = useContext(GithubContext);
   const { setAlert } = useContext(AlertContext);
 
   const [text, setText] = useState("");
@@ -17,8 +17,8 @@ function UserSearch() {
     if (text === "") {
       setAlert("Please enter something", "error");
     } else {
-      dispatch({type:'SET_LOADING'})
-      const users = await searchUsers(text)
+      dispatch({ type: "SET_LOADING" });
+      const users = await searchUsers(text);
       dispatch({ type: "GET_USERS", payload: users });
       setText("");
     }
@@ -49,7 +49,12 @@ function UserSearch() {
       </div>
       {users.length > 0 && (
         <div>
-          <button className="btn btn-ghost btn-lg" onClick={clearUsers}>
+          <button
+            className="btn btn-ghost btn-lg"
+            onClick={() => {
+              dispatch({ type: "CLEAR_USERS" });
+            }}
+          >
             Clear
           </button>
         </div>
